@@ -2,63 +2,83 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2>BASIC VALIDATION</h2>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another action</a></li>
-                            <li><a href="javascript:void(0);">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <h2>Ajouter un chauffeur</h2>
+            
             </div>
             <div class="body">
-                <form id="form_validation" method="POST">
+                <form id="form_validation" method="POST" [formGroup]="chauffeurForm">
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="nom" [(ngModel)]="personne.nom" required>
                             <label class="form-label">Nom</label>
+
+                            <input type="text" class="form-control" required formControlName="nom">
+                            <p *ngIf="chauffeurForm.get('nom').touched && chauffeurForm.get('nom').invalid" class="error">
+                                <sup>*</sup>Nom obligatoire
+                                </p>
+                                <p *ngIf="chauffeurForm.get('nom').errors?.minlength" class="error">
+                                <sup>*</sup>Le nom ne doit pas être inférieur à 3 lettress
+                                </p>
                         </div>
                     </div>
                    
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="prenom" [(ngModel)]="personne.prenom" required>
                             <label class="form-label">Prenom</label>
+
+                            <input type="text" class="form-control" formControlName="prenom" required>
+                            <p *ngIf="chauffeurForm.get('prenom').touched && chauffeurForm.get('prenom').invalid" class="error">
+                                <sup>*</sup>Prenom obligatoire
+                                </p>
+                                <p *ngIf="chauffeurForm.get('prenom').errors?.minlength" class="error">
+                                <sup>*</sup>Le prenom ne doit pas être inférieur à 3 lettress
+                                </p>
                         </div>
                     </div>
                     <div class="form-group form-float">
                         <label for="form-group form-float" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" name="email" [(ngModel)]="personne.email" placeholder="name@example.com">
-                      </div>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="email"  placeholder="name@example.com">
+                        <p *ngIf="chauffeurForm.get('email').touched && chauffeurForm.get('email').invalid" class="error">
+                            <sup>*</sup>Email obligatoire
+                            </p>
+                            <p *ngIf="chauffeurForm.get('email').errors?.email" class="error">
+                            <sup>*</sup>L'email doit être sous la forme name@example.com
+                            </p> 
+                    </div>
                     
                       <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="telephone" [(ngModel)]="personne.tel" required>
-                            <label class="form-label">Telephone</label>
-                        </div>
+                        <label class="form-label">Telephone</label>
+
+                        
+                        <input type="text" class="form-control" formControlName="tel" required>
+                        <p *ngIf="chauffeurForm.get('tel').touched && chauffeurForm.get('tel').invalid" class="error">
+                            <sup>*</sup>Téléphone obligatoire
+                            </p>
+                            <p *ngIf="chauffeurForm.get('tel').errors?.minlength"  class="error">
+                            <sup>*</sup>Doit contenir 8 chiffres
+                            </p>
+                            <p *ngIf="chauffeurForm.get('tel').errors?.maxlength"  class="error">
+                                <sup>*</sup>Doit contenir 8 chiffres
+                                </p>
+                    </div>
                     </div>
                     <div class="form-group">
-                        <input type="radio" name="civilite" value="homme" [(ngModel)]="personne.civilite" id="homme" class="with-gap">
+                        <input type="radio"  value="homme"  id="homme" formControlName="civilite" class="with-gap">
                         <label for="homme">Homme</label>
 
-                        <input type="radio" name="civilite" value="femme" [(ngModel)]="personne.civilite" id="femme" class="with-gap">
+                        <input type="radio"  value="femme"  id="femme" formControlName="civilite" class="with-gap">
                         <label for="femme" class="m-l-20">Femme</label>
                     </div>
                   
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" [(ngModel)]="personne.password" required>
+                            <input type="password" class="form-control" formControlName="password"  required>
                             <label class="form-label">Password</label>
                         </div>
                     </div>
                     <button type="button" class="btn btn-success" (click)="savePersonne()">Valider</button>
                     
-                    <a href="Chauffeurs" class="btn btn-primary">Retour</a>
+                    <a href="chauffeurs" class="btn btn-primary">Retour</a>
                 </form>
             </div>
         </div>
