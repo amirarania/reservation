@@ -1,7 +1,7 @@
 export class Trajet {
-    id_trajet:number;
+    uid:string;
     point_depart:string;
     point_arrive:string;
-    heure_depart:string;
-    heure_arrive:string;
+    ligne:string;
+    
 }
