@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Personne } from '../classes/personne';
 
 import { chauffeursService } from '../services/chauffeurs.service';
@@ -15,7 +16,7 @@ export class ChauffeursComponent implements OnInit {
   chauffeurs : Personne[]
   chauffeursService: any;
   
-  constructor(private cfservice: chauffeursService) { }
+  constructor(private cfservice: chauffeursService,private router:Router) { }
 
   ngOnInit(): void {
     this.getchauffeur();
@@ -44,6 +45,11 @@ export class ChauffeursComponent implements OnInit {
     let record = {}
     record['etat']="debloquer";
     this.cfservice.Bloquerchauffer(record,id);
+  }
+  details(chauffeur)
+  {
+    localStorage.setItem('chauffeur',JSON.stringify(chauffeur));
+    this.router.navigate(['/details']);
   }
 } 
 
