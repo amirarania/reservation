@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Compte } from '../classes/compte';
 import { Personne } from '../classes/personne';
 import { AuthService } from '../services/auth.service';
-import { chauffeursService } from '../services/chauffeurs.service';
 
 @Component({
   selector: 'app-profil',
@@ -15,6 +14,7 @@ export class ProfilComponent implements OnInit {
   personne: Personne = new Personne();
  compte: Compte = new Compte();
   submitted = false;
+  userinfo: any;
 
   constructor(private authService: AuthService,private router:Router) { }
 
@@ -44,6 +44,8 @@ export class ProfilComponent implements OnInit {
   ngOnInit(): void {
     this.user =JSON.parse(localStorage.getItem('user'));
     console.log(this.user);
+    this.userinfo =JSON.parse(localStorage.getItem('currentuser'));
+
   }
 
 
