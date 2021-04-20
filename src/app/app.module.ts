@@ -16,8 +16,6 @@ import { AjouterChauffeurComponent } from './chauffeurs/ajouter-chauffeur/ajoute
 import { ProfilComponent } from './profil/profil.component';
 import { ReservationComponent } from './reservation/reservation.component';
 
-import { MajComponent } from './profil/maj/maj.component';
-import { MdpComponent } from './profil/mdp/mdp.component';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
@@ -26,6 +24,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { MdpComponent } from './profil/mdp/mdp.component';
+import { passwordComponent } from './password/password.component';
+import { ModifierComponent } from './modifier/modifier.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +42,12 @@ import { AngularFireAuth } from '@angular/fire/auth';
     AjouterChauffeurComponent,
     ProfilComponent,
     ReservationComponent,
-    
-    MajComponent,
     MdpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    
+    passwordComponent,
+    ModifierComponent,
+    DetailsComponent,    
   
   ],
   imports: [
