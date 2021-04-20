@@ -12,7 +12,12 @@ export class chauffeursService {
   getchauffeurs() {
     return this.firestore.collection("personne").snapshotChanges();
   }
-
+  getlouage() {
+    return this.firestore.collection("louage").snapshotChanges();
+  }
+  gettrajet() {
+    return this.firestore.collection("trajet").snapshotChanges();
+  }
   ajouterchauffeurs(record) {
     return this.firestore.collection('personne').add(record);
   }
