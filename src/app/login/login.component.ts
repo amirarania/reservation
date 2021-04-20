@@ -7,10 +7,13 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  user: any;
 
   constructor( public authService: AuthService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+
   }
 
 }
